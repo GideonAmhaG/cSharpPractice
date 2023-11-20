@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.Reflection.Metadata.Ecma335;
+
+public class Kata
+{
+    public static int Find(int[] integers)
+    {
+        int len = integers.Length;
+        for (int i = 0; i < len - 1; i++)
+        {
+            if (integers[i] % 2 == 0 && integers[i + 1] % 2 != 0)
+            {
+                if (i == 0 && integers[i + 2] % 2 != 0) return integers[0];
+                else return integers[i + 1];
+            }
+            if (integers[i] % 2 != 0 && integers[i + 1] % 2 == 0)
+            {
+                if (i == 0 && integers[i + 2] % 2 == 0) return integers[0];
+                else return integers[i + 1];
+            }
+        }
+        return -1;
+    }
+}

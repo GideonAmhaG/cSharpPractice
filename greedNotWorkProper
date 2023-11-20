@@ -1,0 +1,39 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+
+public class centeredArray
+{
+    public static int Score(int[] dice)
+    {
+        int len = dice.Length;
+        int ones = 0, twos = 0, threes = 0, fours = 0, fives = 0, sixes = 0, sum = 0;
+        for (int i = 0; i < len; i++)
+        {
+            if (dice[i] == 1) ones++;
+            if (dice[i] == 2) twos++;
+            if (dice[i] == 3) threes++;
+            if (dice[i] == 4) fours++;
+            if (dice[i] == 5) fives++;
+            if (dice[i] == 6) sixes++;
+        }
+        if (ones == 3) sum += 1000;
+        else if (ones == 2) sum += 200;
+        else if (ones == 1) sum += 100;
+        if (sixes == 3) sum += 600;
+        if (fives == 3) sum += 500;
+        else if (fives == 2) sum += 100;
+        else if (fives == 1) sum += 50;
+        if (fours == 3) sum += 400;
+        if (threes == 3) sum += 300;
+        if (twos == 3) sum += 200;
+        return sum;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] exampleArray1 = new int[] {4, 4, 4, 3, 3};
+        int test1 = Score(exampleArray1);
+        Console.WriteLine(test1);
+    }
+}

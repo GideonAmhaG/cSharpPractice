@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Direction
+{
+    public static string[] dirReduc(String[] arr) 
+    {
+        List<string> remainingDirs = new List<string>();
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            if (    (arr[i] == "NORTH" && arr[i + 1] == "SOUTH") ||
+                    (arr[i] == "SOUTH" && arr[i + 1] == "NORTH")
+                )
+                {
+                    i += 2;
+                }
+                   
+            if (    (arr[i] == "EAST" && arr[i + 1] == "WEST") ||  
+                    (arr[i] == "WEST" && arr[i + 1] == "EAST")   
+                )
+                {
+                    i += 2;
+                }
+            remainingDirs.Add(arr[i]);
+        }
+        // remainingDirs.Add(arr[arr.Length - 1]);
+        string[] res = remainingDirs.ToArray();
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string[] testStr1 = { "NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST" };
+        string[] test1 = dirReduc(testStr1);
+        Console.WriteLine("[" + String.Join(", ", test1) + "]");
+    }
+}

@@ -1,0 +1,40 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class CamelCase
+{
+    public static string ToCamelCase(string str) 
+    {
+        int len = str.Length;
+        string newStr = "";
+        bool capitalNxt = false;
+        for (int i = 0; i < len; i++)
+        {
+            if (str[i] == '-' || str[i] == '_')
+            {
+                capitalNxt = true;
+            }
+            else
+            {
+                if (capitalNxt)
+                {
+                    newStr += char.ToUpper(str[i]);
+                    capitalNxt = false;
+                }
+                else
+                {
+                    newStr += str[i];
+                }
+            }
+        }
+        return newStr;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = ToCamelCase("The_Stealth_Warrior");
+        Console.WriteLine(test1);
+    }
+}

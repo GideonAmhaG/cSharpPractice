@@ -1,0 +1,53 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class FIristNon
+{
+    public static string FirstNonRepeatingLetter(string s) 
+    {
+        if (s == "") return "";
+        string copy1 = new string(s);
+        copy1 = copy1.ToLower();
+        string copy2 = new string(s);
+        copy2 = copy2.ToLower();
+        int idx = 0;
+        bool isRepeated = false;
+        string res = "";
+        for (int i = 0; i < copy1.Length; i++)
+        {
+            for (int j = 0; j < copy2.Length; j++)
+            {
+                if (i != j)
+                {
+                    if (copy2[j] == copy1[i])
+                    {
+                        isRepeated = true;
+                        break;
+                    } 
+                    else
+                    {
+                        isRepeated = false;
+                    } 
+                }
+            }
+            if (!isRepeated)
+            {
+                idx = i;
+                break;
+            }
+        }
+        if (isRepeated) return "";
+        res += s[idx];
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = FirstNonRepeatingLetter("sTress");
+        string test2 = FirstNonRepeatingLetter("tata");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

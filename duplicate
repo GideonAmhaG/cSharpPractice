@@ -1,0 +1,43 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Duplicate
+{
+    public static string DuplicateEncode(string word) 
+    {
+        word = word.ToLower();
+        int len = word.Length;
+        string res = "";
+        string copy = new String(word);
+        bool isRepeat = false;
+        for (int i = 0; i < len; i++)
+        {
+            for (int j = 0; j < len; j++)
+            {
+                if (j != i)
+                {
+                    if (word[i] == copy[j])
+                    {
+                        res += ")";
+                        isRepeat = true;
+                        break;
+                    }
+                    else
+                    {
+                        isRepeat = false;
+                    }
+                }
+            }
+            if (!isRepeat) res += "(";
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = DuplicateEncode("Success");
+        Console.WriteLine(test1);
+    }
+}

@@ -1,0 +1,38 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Expanded
+{
+    public static string ExpandedForm(long num) 
+    {
+        string res = "";
+        long mul = 1; // make sure you define mul as long and not int
+        while (true)
+        {
+            if (num / 10 != 0)
+            {
+                res += $"{(num % 10) * mul}";
+                res += " + ";
+            }
+            else
+            {
+                res += $"{num * mul}";
+                break;
+            }
+            mul *= 10;
+            num /= 10;
+        }
+        string[] parts = res.Split(" + ");
+        Array.Reverse(parts);
+        parts = parts.Where(part => part != "0").ToArray();
+        return string.Join(" + ", parts);
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = ExpandedForm(70304);
+        Console.WriteLine(test1);
+    }
+}

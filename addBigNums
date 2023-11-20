@@ -1,0 +1,66 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class R13
+{
+    public static string Add(string a, string b) 
+    {
+        int minLen = (a.Length > b.Length) ? b.Length : a.Length;
+        string longer = "", shorter = "";
+        if (minLen == b.Length)
+        {
+            longer = a;
+            shorter = b;
+        } 
+        else
+        {
+            longer= b;
+            shorter = a; 
+        }
+        int lenDif = longer.Length - shorter.Length;
+        string shorterWithZeros = "";
+        for (int i = 0; i < lenDif; i++)
+        {
+            shorterWithZeros += 0;
+        }
+        shorterWithZeros += shorter;
+        string res = "";
+        bool addOne = false;
+        for (int i = longer.Length - 1; i >= 0; i--)
+        {
+            for (int j = shorterWithZeros.Length - 1; j >= 0; j--)
+            {
+                if (i == j)
+                {
+                    int c = 0;
+                    if (!addOne) c = (longer[i] - '0') + (shorterWithZeros[j] - '0');
+                    else c = (longer[i] - '0') + (shorterWithZeros[j] - '0') + 1;
+                    
+                    if (c <= 9)
+                    {
+                        res = c + res;
+                        addOne = false;
+                    }
+                    else
+                    {
+                        res = (c % 10) + res;
+                        addOne= true;
+                    }
+                }
+            }
+        }
+        if (addOne) res = 1 + res;
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        
+        string test1 = Add("1348", "75");
+        string test2 = Add("91", "19");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

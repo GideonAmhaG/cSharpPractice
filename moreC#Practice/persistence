@@ -1,0 +1,34 @@
+using System;
+
+public class Persist 
+{
+    public static int Persistence(long n) 
+    {
+        if (n >= 0 && n <= 9) return 0;
+        static int mult(long num)
+        {
+            int res = 1;
+            while (true)
+            {
+                if (num / 10 != 0)
+                {
+                    res *= (int)(num % 10);
+                }
+                else
+                {
+                    res *= (int)(num);
+                    break;
+                }
+                num /=10;
+            }
+            return res;
+        }
+        int count = 1;
+        while (mult(n) > 9)
+        {
+            count++;
+            n = mult(n);
+        }
+        return count;
+    }
+}

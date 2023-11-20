@@ -1,0 +1,34 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class R13
+{
+    public static bool Alphanumeric(string str) 
+    {
+        if (str == "") return false;
+        bool isAlphanumeric = true;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (!(Char.IsLetter(str[i]) || Char.IsDigit(str[i])))
+            {
+                isAlphanumeric = false;
+                break;
+            }
+        }
+        return isAlphanumeric;
+    }
+
+    public static void Main(string[] args)
+    {
+        bool test1 = Alphanumeric("Mazinkaiser");
+        bool test2 = Alphanumeric("hello world_");
+        bool test3 = Alphanumeric("PassW0rd");
+        bool test4 = Alphanumeric("     ");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+        Console.WriteLine(test4);
+    }
+}

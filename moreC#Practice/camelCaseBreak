@@ -1,0 +1,17 @@
+public class Kata
+{
+    public static string BreakCamelCase(string str)
+    {
+        int len = str.Length;
+        string newStr = "";
+        for (int i = 0; i < len; i++)
+        {
+            if (char.IsUpper(str[i]))
+            {
+                newStr += " ";
+            }
+            newStr += str[i];
+        }
+        return newStr;
+    }
+}

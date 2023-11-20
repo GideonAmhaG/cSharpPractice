@@ -1,0 +1,43 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Pers
+{
+    public static int Persistence(long n) 
+    {
+        if (n >= 0 && n <= 9) return 0;
+        static int mult(long num)
+        {
+            int res = 1;
+            while (true)
+            {
+                if (num / 10 != 0)
+                {
+                    res *= (int)(num % 10);
+                }
+                else
+                {
+                    res *= (int)(num);
+                    break;
+                }
+                num /=10;
+            }
+            return res;
+        }
+        int count = 1;
+        while (mult(n) > 9)
+        {
+            count++;
+            n = mult(n);
+        }
+        return count;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = Persistence(4);
+        Console.WriteLine(test1);
+    }
+}

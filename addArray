@@ -1,0 +1,23 @@
+using System;
+
+public class AddArray
+{
+    public static int Add(int[] array)
+    {
+        int sum = 0;
+        foreach (int element in array)
+        {
+            sum += element;
+        }
+        return sum;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] exampleArray = new int[] {1, 2, 3, 4, 5};
+
+        int sum = Add(exampleArray);
+
+        Console.WriteLine("The sum of the elements in the example array is: {0}", sum);
+    }
+}

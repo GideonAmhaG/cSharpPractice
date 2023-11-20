@@ -1,0 +1,42 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class R13
+{
+    public static string Rot13(string message) 
+    {
+        if (string.IsNullOrEmpty(message)) return message;
+        char[] res = new char[message.Length];
+        for (int i = 0; i < message.Length; i++)
+        {
+            char c = message[i];
+            if (c >= 'A' && c <= 'Z')
+            {
+                int j = c + 13;
+                if (j > 'Z') j -= 26;
+                res[i] = (char)j;
+            }
+            else if (c >= 'a' && c <= 'z')
+            {
+                int j = c + 13;
+                if (j > 'z') j -= 26;
+                res[i] = (char)j;
+            }
+            else
+            {
+                res[i] = (char)c;
+            }
+        }
+        return new string(res);
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = Rot13("test");
+        string test2 = Rot13("Test");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

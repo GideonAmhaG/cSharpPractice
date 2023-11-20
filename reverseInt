@@ -1,0 +1,30 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+
+public class reverseInt
+{
+    public static int f(int n)
+    {
+        int sign = 1;
+        if (n == 0) return 0;
+        if (n < 0)
+        {
+            n = -n;
+            sign = -1;
+        }
+        int rev = 0;
+        while (n > 0)
+        {
+            rev = (rev * 10) + (n % 10);
+            n /= 10;
+        }
+        return sign * rev;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = f(1230);
+        Console.WriteLine(test1);
+    }
+}
