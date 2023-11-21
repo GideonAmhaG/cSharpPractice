@@ -1,0 +1,35 @@
+using System;
+
+public class centeredArray
+{
+    public static int RomanToInt(string s)
+    {
+        Dictionary<char, int> myDict = new Dictionary<char, int>()
+        {
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000}
+        };
+        int res = 0;
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (i + 1 < s.Length && myDict[s[i]] < myDict[s[i + 1]]) res -= myDict[s[i]];
+            else res += myDict[s[i]];
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = RomanToInt("III");
+        int test2 = RomanToInt("LVIII");
+        int test3 = RomanToInt("MCMXCIV");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+    }
+}

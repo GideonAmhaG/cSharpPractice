@@ -1,0 +1,28 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Soluition
+{
+    public static bool IsPalindrome(int x)
+    {
+        string num = x.ToString();
+        for (int i = 0, j = num.Length - 1; i < num.Length; i++, j--)
+        {
+            if (num[i] != num[j]) return false;
+        }
+        return true;
+    }
+
+    public static void Main(string[] args)
+    {
+        bool test1 = IsPalindrome(121);
+        bool test2 = IsPalindrome(-121);
+        bool test3 = IsPalindrome(10);
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+    }
+}

@@ -1,0 +1,32 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
+
+public class Change
+{
+    public static int CountCombinations(int money, int[] coins)
+    {
+        int[] combinations = new int[money + 1];
+        combinations[0] = 1;
+        foreach (int coin in coins)
+        {
+            for (int i = coin; i <= money; i++)
+            {
+                combinations[i] += combinations[i - coin];
+            }
+        }
+        return combinations[money];
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = CountCombinations(4, new[] {1,2});
+        int test2 = CountCombinations(10, new[] {5,2,3});
+        int test3 = CountCombinations(11, new[] {5,7});
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+    }
+}
