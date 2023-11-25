@@ -1,0 +1,24 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+
+public class centeredArray
+{
+    public static string CreatePhoneNumber(int[] numbers)
+    {
+        string res = "(";
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            if (i == 3) res += ") ";
+            if (i == 6) res += "-";
+            res += numbers[i];
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = CreatePhoneNumber(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0});
+        Console.WriteLine(test1);
+    }
+}

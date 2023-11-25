@@ -1,0 +1,22 @@
+using System;
+
+
+public static class Solution
+{
+    public static string ToJadenCase(this string phrase)
+    {
+        string[] words = phrase.Split(" ");
+        for (int i = 0; i < words.Length; i++)
+        {
+            words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1); 
+        }
+        string res = string.Join(" ", words);
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = "How can mirrors be real if our eyes aren't real".ToJadenCase();
+        Console.WriteLine(test1);
+    }
+}

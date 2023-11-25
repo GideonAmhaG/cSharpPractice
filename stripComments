@@ -1,0 +1,32 @@
+using System;
+using System.Security.Cryptography;
+
+public class Duplicate
+{
+    public static string StripComments(string text, string[] commentSymbols) 
+    {
+        string[] lines = text.Split("\n");
+        string[] newLines = new string[lines.Length];
+        char[] symbols = new char[commentSymbols.Length];
+        for (int i = 0; i < commentSymbols.Length; i++)
+        {
+            symbols[i] = commentSymbols[i][0];
+        }
+        for (int i = 0; i < lines.Length; i++)
+        {
+            int index = lines[i].IndexOfAny(symbols);
+            if (index >= 0) newLines[i] = lines[i].Substring(0, index).TrimEnd();
+            else newLines[i] = lines[i].TrimEnd();
+        }
+        string res = string.Join("\n", newLines);
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = StripComments("apples, pears # and bananas\ngrapes\nbananas !apples", new string[] { "#", "!" });
+        string test2 = StripComments("a #b\nc\nd $e f g", new string[] { "#", "$" });
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

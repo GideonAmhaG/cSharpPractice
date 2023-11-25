@@ -1,0 +1,37 @@
+using System;
+using System.Diagnostics.Metrics;
+using System.Reflection.Metadata.Ecma335;
+
+public class centeredArray
+{
+    public static long[] SumDigPow(long a, long b)
+    {
+        long[] res = new long[b - a];
+        int index = 0;
+        for (long i = a; i <= b; i++)
+        {
+            string num = i.ToString();
+            long sum = 0;
+            for (int j = 0; j < num.Length; j++)
+            {
+                int digit = num[j] - '0';
+                sum += (int)Math.Pow(digit, j + 1);
+            }
+            if (sum == i)
+            {
+                res[index] = i;
+                index++;
+            }
+        }
+        Array.Resize(ref res, index);
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        long[] test1 = SumDigPow(1, 100);
+        long[] test2 = SumDigPow(50, 150);
+        Console.WriteLine(string.Join(", ", test1));
+        Console.WriteLine(string.Join(", ", test2));
+    }
+}

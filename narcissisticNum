@@ -1,0 +1,29 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+public class Solution
+{
+    public static bool Narcissistic(int value)
+    {
+        string num = value.ToString();
+        int sum = 0;
+        for (int i = 0; i < num.Length; i++)
+        {
+            int n = num[i] - '0';
+            sum += (int)Math.Pow(n, num.Length);
+        }
+        if (sum == value) return true;
+        return false;
+    }
+
+    public static void Main(string[] args)
+    {
+        bool test1 = Narcissistic(371);
+        bool test2 = Narcissistic(1);
+        bool test3 = Narcissistic(1938);
+        
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+    }
+}
