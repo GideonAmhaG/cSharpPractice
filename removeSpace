@@ -1,0 +1,22 @@
+using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static string NoSpace(string input)
+    {
+        string res = "";
+        foreach (char c in input)
+        {
+            if (c != ' ') res += c; 
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = NoSpace("8aaaaa dddd r     ");
+        Console.WriteLine(test1);
+    }
+}

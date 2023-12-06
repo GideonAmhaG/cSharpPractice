@@ -1,0 +1,21 @@
+using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static string AbbrevName(string name)
+    {
+        string[] arr = name.Split(" ");
+        string res = char.ToUpper(arr[0][0]) + "." + char.ToUpper(arr[1][0]);
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = AbbrevName("Sam Harris");
+        string test2 = AbbrevName("patrick feeney");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

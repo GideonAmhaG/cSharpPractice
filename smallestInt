@@ -1,0 +1,24 @@
+using System;
+using System.Numerics;
+using System.Security.Cryptography;
+
+public class Solution
+{
+    public static int FindSmallestInt(int[] args) 
+    {
+        int res = args[1];
+        for (int i = 1; i < args.Length; i++)
+        {
+            if (args[i] < res) res = args[i];
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = FindSmallestInt(new int[]{78,56,232,12,11,43});
+        int test2 = FindSmallestInt(new int[]{78,56,-2,12,8,-33});
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

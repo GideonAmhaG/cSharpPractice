@@ -1,0 +1,31 @@
+using System;
+using System.Numerics;
+
+public class Solution
+{
+    public static BigInteger NumberOfDuplicates(int barcode)
+    {
+        BigInteger digit = (BigInteger)Math.Pow(10, barcode), c = 0;
+        for (BigInteger i = digit / 10; i < digit; i++)
+        {
+            string num = i.ToString();
+            for (int j = 0; j < num.Length - 1; j++)
+            {
+                if (num[j] == num[j + 1])
+                {
+                    c++;
+                    break;
+                }
+            }
+        }
+        return c;
+    }
+
+    public static void Main(string[] args)
+    {
+        BigInteger test1 = NumberOfDuplicates(3);
+        BigInteger test2 = NumberOfDuplicates(5);
+        Console.WriteLine(test1); 
+        Console.WriteLine(test2); 
+    }
+}

@@ -1,0 +1,31 @@
+using System;
+using System.Numerics;
+using System.Security.Cryptography;
+
+public class Solution
+{
+    public static int FindEvenIndex(int[] arr)
+    {
+        int len = arr.Length;
+        for (int i = 0; i < len; i++)
+        {
+            int sumL = 0, sumR = 0;
+            for (int j = 0; j < i; j++) sumL += arr[j];
+            for (int j = i + 1; j < len; j++) sumR += arr[j];
+            if (sumL == sumR) return i;
+        }
+        return -1;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = FindEvenIndex(new int[] {1,2,3,4,3,2,1});
+        int test2 = FindEvenIndex(new int[] {1,100,50,-51,1,1});
+        int test3 = FindEvenIndex(new int[] {1,2,3,4,5,6});
+        int test4 = FindEvenIndex(new int[] {20,10,30,10,10,15,35});
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+        Console.WriteLine(test4);
+    }
+}
