@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static string HighAndLow(string numbers)
+    {
+        string[] arr = numbers.Split(" ");
+        int idxS = 0, idxL = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (int.Parse(arr[idxS]) > int.Parse(arr[i])) idxS = i;
+            if (int.Parse(arr[idxL]) < int.Parse(arr[i])) idxL = i;
+        }
+        return arr[idxL] + " " + arr[idxS];
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = HighAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4");
+        Console.WriteLine(test1);
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static int[] Divisors(int n)
+    {
+        int len = 0;
+        for (int i = 2; i < n; i++) 
+        {
+            if (n % i == 0) len++;
+        }
+        if (len == 0) return null;
+        int[] res = new int[len];
+        int idx = 0;
+        for (int i = 2; i < n; i++) 
+        {
+            if (n % i == 0) res[idx++] = i;
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] test1 = Divisors(12);
+        Console.WriteLine(string.Join(", ", test1));
+    }
+}

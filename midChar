@@ -1,0 +1,26 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static string GetMiddle(string s)
+    {
+        int len = s.Length;
+        if (len == 0) return "";
+        if (len == 1) return s[0].ToString();
+        string res = "";
+        if (len % 2 != 0) return s[len / 2].ToString();
+        else res = s[(len / 2) - 1] + "" + s[len / 2];
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        string test1 = GetMiddle("test");
+        string test2 = GetMiddle("testing");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}

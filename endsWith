@@ -1,0 +1,29 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static bool Solution1(string str, string ending)
+    {
+        int len1 = str.Length;
+        int len2 = ending.Length;
+        if (len2 > len1) return false;
+        int j = 0;
+        for (int i = len1 - 1; i >= len1 - len2; i--)
+        {
+            if (ending[len2 - 1 - j] != str[i]) return false;
+            j++;
+        }
+        return true;
+    }
+
+    public static void Main(string[] args)
+    {
+        bool test1 = Solution1("samurai", "ai");
+        bool test2 = Solution1("sumo", "omo");
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+    }
+}
