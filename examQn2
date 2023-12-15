@@ -1,0 +1,41 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static int f(int[] a)
+    {
+        if (a.Length == 0) return 0;
+        int x = 0, y = 0;
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] % 2 != 0) x += a[i];
+            else y += a[i];
+        }
+        return x - y;
+    }
+
+    public static void Main(string[] args)
+    {
+        long test1 = f(new int[] {1});
+        long test2 = f(new int[] {1, 2});
+        long test3 = f(new int[] {1, 2, 3});
+        long test4 = f(new int[] {1, 2, 3, 4});
+        long test5 = f(new int[] {3, 3, 4, 4});
+        long test6 = f(new int[] {3, 2, 3, 4});
+        long test7 = f(new int[] {4, 1, 2, 3});
+        long test8 = f(new int[] {1, 1});
+        long test9 = f(new int[] {});
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+        Console.WriteLine(test4);
+        Console.WriteLine(test5);
+        Console.WriteLine(test6);
+        Console.WriteLine(test7);
+        Console.WriteLine(test8);
+        Console.WriteLine(test9);
+    }
+}

@@ -1,0 +1,37 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static int Centered(int[] a)
+    {
+       int len = a.Length;
+       if (len == 0) return 0;
+       if (len % 2 == 0) return 0;
+       int midIdx = len / 2;
+       for (int i = 0; i < len; i++)
+       {
+            if (i != midIdx && a[i] <= a[midIdx]) return 0;
+       }
+       return 1;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] exampleArray1 = new int[] {1, 2, 3, 4, 5};
+        int[] exampleArray2 = new int[] {3, 2, 1, 4, 5};
+        int[] exampleArray3 = new int[] {3, 2, 1, 4, 1};
+        int[] exampleArray4 = new int[] {1, 2, 3, 4};
+        int[] exampleArray5 = new int[] {};
+        int[] exampleArray6 = new int[] {10};
+
+        Console.WriteLine(Centered(exampleArray1));
+        Console.WriteLine(Centered(exampleArray2));
+        Console.WriteLine(Centered(exampleArray3));
+        Console.WriteLine(Centered(exampleArray4));
+        Console.WriteLine(Centered(exampleArray5));
+        Console.WriteLine(Centered(exampleArray6));
+    }
+}

@@ -1,0 +1,86 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static int[] f(int[] first, int[] second)
+    {
+        if (first == null || second == null) return null;
+        int minLen = 0;
+        if (first.Length < second.Length) minLen = first.Length;
+        else minLen = second.Length;
+        int[] longArr, shortArr;
+        if (minLen == first.Length)
+        {
+            longArr = second;
+            shortArr = first;
+        }
+        else
+        {
+            longArr = first;
+            shortArr= second;
+        }
+        int[] arr = new int[minLen];
+        int k = 0;
+        for (int i = 0; i < shortArr.Length; i++)
+        {
+            for (int j = 0; j < longArr.Length; j++)
+            {
+                if (longArr[j] == shortArr[i])
+                {
+                    arr[k] = longArr[j];
+                    k++;
+                }
+            }
+        }
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++)
+        {
+            res[i] = arr[i];
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] exampleArray1A = new int[] {1, 8, 3, 2};
+        int[] exampleArray1B = new int[] {4, 2, 6, 1};
+        int[] case1 = f(exampleArray1A, exampleArray1B);
+        int[] exampleArray2A = new int[] {1, 8, 3, 2, 6};
+        int[] exampleArray2B = new int[] {2, 6, 1};
+        int[] case2 = f(exampleArray2A, exampleArray2B);
+        int[] exampleArray3A = new int[] {1, 3, 7, 9};
+        int[] exampleArray3B = new int[] {7, 1, 9, 3};
+        int[] case3 = f(exampleArray3A, exampleArray3B);
+        int[] exampleArray4A = new int[] {1, 2};
+        int[] exampleArray4B = new int[] {3, 4};
+        int[] case4 = f(exampleArray4A, exampleArray4B);
+        int[] exampleArray5A = new int[0];
+        int[] exampleArray5B = new int[] {1, 2, 3};
+        int[] case5 = f(exampleArray5A, exampleArray5B);
+        int[] exampleArray6A = new int[] {1, 2};
+        int[] exampleArray6B = new int[0];
+        int[] case6 = f(exampleArray6A, exampleArray6B);
+        int[] exampleArray7A = new int[] {1, 2};
+        int[] exampleArray7B = null;
+        int[] case7 = f(exampleArray7A, exampleArray7B);
+        int[] exampleArray8A = null;
+        int[] exampleArray8B = new int[0];
+        int[] case8 = f(exampleArray8A, exampleArray8B);
+        int[] exampleArray9A = null;
+        int[] exampleArray9B = null;
+        int[] case9 = f(exampleArray9A, exampleArray9B);
+ 
+        Console.WriteLine(case1 == null ? "null" : $"{{{string.Join(", ", case1)}}}");
+        Console.WriteLine(case2 == null ? "null" : $"{{{string.Join(", ", case2)}}}");
+        Console.WriteLine(case3 == null ? "null" : $"{{{string.Join(", ", case3)}}}");
+        Console.WriteLine(case4 == null ? "null" : $"{{{string.Join(", ", case4)}}}");
+        Console.WriteLine(case5 == null ? "null" : $"{{{string.Join(", ", case5)}}}");
+        Console.WriteLine(case6 == null ? "null" : $"{{{string.Join(", ", case6)}}}");
+        Console.WriteLine(case7 == null ? "null" : $"{{{string.Join(", ", case7)}}}");
+        Console.WriteLine(case8 == null ? "null" : $"{{{string.Join(", ", case8)}}}");
+        Console.WriteLine(case9 == null ? "null" : $"{{{string.Join(", ", case9)}}}");
+    }
+}

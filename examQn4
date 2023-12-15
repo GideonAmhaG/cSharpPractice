@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static int f(int n)
+    {
+        int sign = 1;
+        int res = 0;
+        if (n < 0)
+        {
+            sign = -1;
+            n = n * -1;
+        }
+        while (n > 0)
+        {
+            res = (res * 10) + (n % 10);
+            n /= 10;
+        }
+        return sign * res;
+    }
+
+    public static void Main(string[] args)
+    {
+        int test1 = f(1234);
+        int test2 = f(12005);
+        int test3 = f(1);
+        int test4 = f(1000);
+        int test5 = f(0);
+        int test6 = f(-12345);
+        Console.WriteLine(test1);
+        Console.WriteLine(test2);
+        Console.WriteLine(test3);
+        Console.WriteLine(test4);
+        Console.WriteLine(test5);
+        Console.WriteLine(test6);
+    }
+}

@@ -1,0 +1,55 @@
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+public class Solution
+{
+    public static char[] f(char[] a, int start, int len)
+    {
+        if (start < 0 || len < 0) return null;
+        int l = a.Length;
+        if (start + len > l) return null;
+        char[] res = new char[len];
+        for (int i = 0; i < len; i++)
+        {
+            res[i] = a[start];
+            start++;
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        char[] test = {'a', 'b', 'c'};
+        char[] case1 = f(test, 0, 4);
+        char[] case2 = f(test, 0, 3);
+        char[] case3 = f(test, 0, 2);
+        char[] case4 = f(test, 0, 1);
+        char[] case5 = f(test, 1, 3);
+        char[] case6 = f(test, 1, 2);
+        char[] case7 = f(test, 1, 1);
+        char[] case8 = f(test, 2, 2);
+        char[] case9 = f(test, 2, 1);
+        char[] case10 = f(test, 3, 1);
+        char[] case11 = f(test, 1, 0);
+        char[] case12 = f(test, -1, 2);
+        char[] case13 = f(test, -1, -2);
+        char[] case14 = f(Array.Empty<char>(), 0, 1);
+       
+        Console.WriteLine(case1 == null ? "null" : string.Join(", ", case1));
+        Console.WriteLine(case2 == null ? "null" : string.Join(", ", case2));
+        Console.WriteLine(case3 == null ? "null" : string.Join(", ", case3));
+        Console.WriteLine(case4 == null ? "null" : string.Join(", ", case4));
+        Console.WriteLine(case5 == null ? "null" : string.Join(", ", case5));
+        Console.WriteLine(case6 == null ? "null" : string.Join(", ", case6));
+        Console.WriteLine(case7 == null ? "null" : string.Join(", ", case7));
+        Console.WriteLine(case8 == null ? "null" : string.Join(", ", case8));
+        Console.WriteLine(case9 == null ? "null" : string.Join(", ", case9));
+        Console.WriteLine(case10 == null ? "null" : string.Join(", ", case10));
+        Console.WriteLine(case11 == null ? "null" : string.Join(", ", case11));
+        Console.WriteLine(case12 == null ? "null" : string.Join(", ", case12));
+        Console.WriteLine(case13 == null ? "null" : string.Join(", ", case13));
+        Console.WriteLine(case14 == null ? "null" : string.Join(", ", case14));
+    }
+}
