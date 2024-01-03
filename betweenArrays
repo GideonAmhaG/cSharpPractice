@@ -1,0 +1,39 @@
+using System;
+
+public class Solution
+{
+    public static int getTotalX(int[] a, int[] b)
+    {
+        int lA = a.Length, lB = b.Length;
+        int c = 0;
+        for (int i = 2; i <= 100; i++)
+        {
+            bool fact1 = true;
+            bool fact2 = true;
+            for (int j = 0; j < lA; j++)
+            {
+                if (i % a[j] != 0)
+                {
+                    fact1 = false;
+                    break;
+                }
+            }
+            for (int j = 0; j < lB; j++)
+            {
+                if (b[j] % i != 0)
+                {
+                    fact2 = false;
+                    break;
+                }
+            }
+            if (fact1 && fact2) c++;
+        }
+        return c;
+    }
+ 
+    public static void Main(string[] args)
+    {
+        int test1 = getTotalX(new int[] {2, 6}, new int[] {24, 36});
+        Console.WriteLine(test1);
+    }
+}
