@@ -1,0 +1,24 @@
+using System;
+
+public class Solution
+{
+    public static int migratoryBirds(List<int> arr)
+    {
+        int len = arr.Count;
+        int[] a = new int[6];
+        foreach (int e in arr) a[e]++;
+        int idx = 0;
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] > a[idx]) idx = i;
+        }
+        return idx;
+    }
+  
+    public static void Main(string[] args)
+    {
+        int test1 = migratoryBirds(new List<int> {1, 4, 4, 4, 5, 3});
+        
+        Console.WriteLine(test1);
+    }
+}
